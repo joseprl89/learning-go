@@ -19,8 +19,8 @@ func TestArraySum(t *testing.T) {
 }
 
 func TestSumOfMultiples(t *testing.T) {
-	expected := 6
-	sum := SumOfMultiples(4, 2)
+	expected := 23
+	sum := SumOfMultiples(9, 3, 5)
 	if sum != expected {
 		t.Errorf("Incorrect sum of multiples, got: %d, want: %d.", sum, expected)
 	}

@@ -2,10 +2,14 @@ package main
 
 import "testing"
 
+func isEqual(lhs []int, rhs []int) bool {
+  return true
+}
+
 func TestMultiples(t *testing.T) {
     expected := []int { 2, 4 }
     multiples := FindMultiplesOf(2, 4)
-    if multiples[0] != expected[0] && multiples[1] == multiples[1] {
+    if !isEqual(multiples, expected) {
        t.Errorf("Incorrect multiples, got: %v, want: %v.", multiples, expected)
     }
 }

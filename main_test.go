@@ -26,6 +26,15 @@ func TestSumOfMultiples(t *testing.T) {
 	}
 }
 
+func TestMergeArrays(t *testing.T) {
+	expected := []int{1, 2, 3}
+	result := MergeArrays([]int{1, 2}, []int{2, 3})
+
+	if !IsEqual(result, expected) {
+		t.Errorf("Incorrect merged arrays, got: %v, want: %v.", result, expected)
+	}
+}
+
 func IsEqual(lhs []int, rhs []int) bool {
 	if (lhs == nil) != (rhs == nil) {
 		return false

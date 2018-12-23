@@ -18,6 +18,14 @@ func TestArraySum(t *testing.T) {
 	}
 }
 
+func TestSumOfMultiples(t *testing.T) {
+	expected := 6
+	sum := SumOfMultiples(2, 4)
+	if sum != expected {
+		t.Errorf("Incorrect sum of multiples, got: %d, want: %d.", sum, expected)
+	}
+}
+
 func IsEqual(lhs []int, rhs []int) bool {
 	if (lhs == nil) != (rhs == nil) {
 		return false

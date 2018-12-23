@@ -1,8 +1,17 @@
 package main
 
+import "math"
+
 func NotDivisibleByAny(primes []int, number int) bool {
+	limit := int(math.Sqrt(float64(number))) + 1
 	for i := range primes {
-		if number%primes[i] == 0 {
+		prime := primes[i]
+
+		if prime > limit {
+			return true
+		}
+
+		if number%prime == 0 {
 			return false
 		}
 	}

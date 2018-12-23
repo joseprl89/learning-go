@@ -22,6 +22,21 @@ func SumOfMultiples(x int, y int) int {
 	return SumOf(FindMultiplesOf(x, y))
 }
 
+func contains(array []int, value int) bool {
+	for i := range array {
+		if array[i] == value {
+			return true
+		}
+	}
+
+	return false
+}
+
 func MergeArrays(lhs []int, rhs []int) []int {
-	return []int{1, 2, 3}
+	for i := range rhs {
+		if !contains(lhs, rhs[i]) {
+			lhs = append(lhs, rhs[i])
+		}
+	}
+	return lhs
 }

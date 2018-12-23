@@ -1,4 +1,5 @@
 verify:
+	go fmt
 	go test && make commit || make revert
 
 revert:

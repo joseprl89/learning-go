@@ -1,6 +1,6 @@
 verify:
 	go fmt
-	go test && make commit || make revert
+	go test testing && make commit || make revert
 
 revert:
 	git reset --hard

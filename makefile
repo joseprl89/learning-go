@@ -1,4 +1,4 @@
-test_commit_or_revert:
+verify:
 	go test && make commit || make revert
 
 revert:
@@ -6,4 +6,4 @@ revert:
 
 commit:
 	git add .
-	git commit -m "`date '+%d/%m/%Y %H:%M:%S'`: Tests passed!"
+	git commit -m "`date '+%d/%m/%Y %H:%M'`: Tests passed!"

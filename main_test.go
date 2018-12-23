@@ -10,6 +10,13 @@ func isEqual(lhs []int, rhs []int) bool {
   if len(lhs) != len(rhs) {
     return false
   }
+
+  for i := range lhs {
+    if lhs[i] != rhs[i] {
+      return false
+    }
+  }
+
   return true
 }
 

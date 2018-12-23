@@ -4,6 +4,7 @@ import "math"
 
 func NotDivisibleByAny(primes []int, number int) bool {
 	limit := int(math.Sqrt(float64(number))) + 1
+
 	for i := range primes {
 		prime := primes[i]
 
@@ -15,6 +16,7 @@ func NotDivisibleByAny(primes []int, number int) bool {
 			return false
 		}
 	}
+
 	return true
 }
 

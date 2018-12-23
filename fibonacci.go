@@ -1,5 +1,17 @@
 package main
 
 func FibonacciSequenceUpTo(limit int) []int {
-	return []int{1, 2, 3, 5, 8, 13, 21, 34}
+	current := 1
+	next := 2
+	var result []int
+
+	for current < limit {
+		result = append(result, current)
+
+		var previous = current
+		current = next
+		next = previous + current
+	}
+
+	return result
 }

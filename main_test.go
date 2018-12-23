@@ -14,7 +14,7 @@ func TestArraySum(t *testing.T) {
 	expected := 6
 	sum := SumOf([]int{2, 4})
 	if sum != expected {
-		t.Errorf("Incorrect sum of array, got: %v, want: %v.", sum, expected)
+		t.Errorf("Incorrect sum of array, got: %d, want: %d.", sum, expected)
 	}
 }
 

@@ -3,8 +3,8 @@ package main
 import "testing"
 
 func TestSum(t *testing.T) {
-    total := Sum(5, 5)
-    if total != 10 {
-       t.Errorf("Sum was incorrect, got: %d, want: %d.", total, 10)
+    total := FindMultiplesOf(2, 3)
+    if total != 2 {
+       t.Errorf("Incorrect multiple, got: %d, want: 2.", total)
     }
 }

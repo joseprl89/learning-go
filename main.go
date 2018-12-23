@@ -5,10 +5,9 @@ func FindMultiplesOf(x int, limit int) []int {
   for i := 1; i <= limit; i++ {
     if i % x == 0 {
       multiples = append(multiples, i)
-      return multiples
     }
   }
-  return []int { }
+  return multiples
 }
 
 func sumOf(array []int) int {

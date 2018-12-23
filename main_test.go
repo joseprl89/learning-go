@@ -6,6 +6,10 @@ func isEqual(lhs []int, rhs []int) bool {
   if (lhs == nil) != (rhs == nil) {
     return false
   }
+
+  if len(lhs) != len(rhs) {
+    return false
+  }
   return true
 }
 

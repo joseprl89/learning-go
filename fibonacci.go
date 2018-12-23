@@ -17,5 +17,19 @@ func FibonacciSequenceUpTo(limit int) []int {
 }
 
 func EvenFibonacciSequenceUpTo(limit int) []int {
-	return Filter(IsEven, FibonacciSequenceUpTo(limit))
+	current := 1
+	next := 2
+	var result []int
+
+	for current < limit {
+		if IsEven(current) {
+			result = append(result, current)
+		}
+
+		var previous = current
+		current = next
+		next = previous + current
+	}
+
+	return result
 }

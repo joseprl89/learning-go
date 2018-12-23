@@ -18,6 +18,14 @@ func TestEvenFibonacciSequence(t *testing.T) {
 	}
 }
 
+func TestSumEvenFibonacciSequence(t *testing.T) {
+	expected := 44
+	result := SumOf(EvenFibonacciSequenceUpTo(40))
+	if result != expected {
+		t.Errorf("Incorrect sum of fibonacci, got: %d, want: %d.", result, expected)
+	}
+}
+
 func TestIsEven(t *testing.T) {
 	if !IsEven(2) {
 		t.Error("IsEven says 2 is not even.")

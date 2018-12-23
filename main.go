@@ -18,8 +18,8 @@ func SumOf(array []int) int {
 	return result
 }
 
-func SumOfMultiples(x int, y int) int {
-	return SumOf(FindMultiplesOf(x, y))
+func SumOfMultiples(limit int, multiples ...int) int {
+	return SumOf(FindMultiplesOf(multiples[0], limit))
 }
 
 func contains(array []int, value int) bool {

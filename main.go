@@ -25,7 +25,7 @@ func SumOf(array []int) int {
 }
 
 func SumOfMultiples(limit int, multiples ...int) int {
-	return 23
+	return SumOf(FindMultiplesOf(limit, multiples...))
 }
 
 func contains(array []int, value int) bool {

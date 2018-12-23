@@ -3,7 +3,13 @@ package main
 type FilterFunction func(int) bool
 
 func Filter(function FilterFunction, array []int) []int {
-	return []int{2, 4, 6}
+	var result []int
+	for i := range array {
+		if function(array[i]) {
+			result = append(result, array[i])
+		}
+	}
+	return result
 }
 
 func SumOf(array []int) int {

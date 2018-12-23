@@ -1,4 +1,5 @@
 verify:
+	git add
 	go test && make commit || make revert
 
 revert:

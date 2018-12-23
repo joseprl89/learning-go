@@ -15,3 +15,11 @@ func TestIsEven(t *testing.T) {
 		t.Error("IsEven says 2 is not even.")
 	}
 }
+
+func TestFilter(t *testing.T) {
+	expected := []int{2, 4, 6}
+	filtered := Filter(IsEven, []int{1, 2, 3, 4, 5, 6})
+	if !IsEqual(filtered, expected) {
+		t.Errorf("Incorrect filtered, got: %v, want: %v.", filtered, expected)
+	}
+}

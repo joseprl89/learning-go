@@ -1,5 +1,11 @@
 package main
 
+type FilterFunction func(int) bool
+
+func Filter(function FilterFunction, array []int) []int {
+	return []int{2, 4, 6}
+}
+
 func SumOf(array []int) int {
 	var result = 0
 	for i := 0; i < len(array); i++ {

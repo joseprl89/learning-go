@@ -1,5 +1,5 @@
 verify:
-	git add
+	git add . || exit "No changes"
 	go test && make commit || make revert
 
 revert:

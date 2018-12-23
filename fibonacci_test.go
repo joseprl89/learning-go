@@ -9,3 +9,9 @@ func TestFibonacci(t *testing.T) {
 		t.Errorf("Incorrect multiples, got: %v, want: %v.", fibonacci, expected)
 	}
 }
+
+func TestIsEven(t *testing.T) {
+	if !IsEven(2) {
+		t.Error("IsEven says 2 is not even.")
+	}
+}

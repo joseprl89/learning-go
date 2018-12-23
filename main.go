@@ -19,5 +19,5 @@ func SumOf(array []int) int {
 }
 
 func SumOfMultiples(x int, y int) int {
-	return 6
+	return SumOf(FindMultiplesOf(x, y))
 }

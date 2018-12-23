@@ -15,3 +15,7 @@ func FibonacciSequenceUpTo(limit int) []int {
 
 	return result
 }
+
+func EvenFibonacciSequenceUpTo(limit int) []int {
+	return Filter(IsEven, FibonacciSequenceUpTo(limit))
+}

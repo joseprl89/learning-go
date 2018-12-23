@@ -10,6 +10,14 @@ func TestFibonacci(t *testing.T) {
 	}
 }
 
+func TestEvenFibonacciSequence(t *testing.T) {
+	expected := []int{2, 8, 34}
+	fibonacci := EvenFibonacciSequenceUpTo(40)
+	if !IsEqual(fibonacci, expected) {
+		t.Errorf("Incorrect multiples, got: %v, want: %v.", fibonacci, expected)
+	}
+}
+
 func TestIsEven(t *testing.T) {
 	if !IsEven(2) {
 		t.Error("IsEven says 2 is not even.")

@@ -10,6 +10,14 @@ func TestMultiples(t *testing.T) {
 	}
 }
 
+func TestMultiplesOnEdge(t *testing.T) {
+	expected := []int{2}
+	multiples := FindMultiplesOf(2, 4)
+	if !IsEqual(multiples, expected) {
+		t.Errorf("Incorrect multiples, got: %v, want: %v.", multiples, expected)
+	}
+}
+
 func TestArraySum(t *testing.T) {
 	expected := 6
 	sum := SumOf([]int{2, 4})

@@ -1,6 +1,10 @@
-package main
+package arrays
 
 type FilterFunction func(int) bool
+
+func IsEven(x int) bool {
+	return x%2 == 0
+}
 
 func Filter(function FilterFunction, array []int) []int {
 	var result []int

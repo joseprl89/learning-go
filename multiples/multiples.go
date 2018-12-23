@@ -1,4 +1,6 @@
-package main
+package multiples
+
+import "arrays"
 
 func FindMultiplesOf(limit int, x ...int) []int {
 	var multiples []int
@@ -17,5 +19,5 @@ func FindMultiplesOf(limit int, x ...int) []int {
 }
 
 func SumOfMultiples(limit int, multiples ...int) int {
-	return SumOf(FindMultiplesOf(limit, multiples...))
+	return arrays.SumOf(FindMultiplesOf(limit, multiples...))
 }

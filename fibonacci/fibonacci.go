@@ -1,4 +1,6 @@
-package main
+package fibonacci
+
+import "arrays"
 
 func FibonacciSequenceUpTo(limit int) []int {
 	current := 1
@@ -22,7 +24,7 @@ func EvenFibonacciSequenceUpTo(limit int) []int {
 	var result []int
 
 	for current < limit {
-		if IsEven(current) {
+		if arrays.IsEven(current) {
 			result = append(result, current)
 		}
 

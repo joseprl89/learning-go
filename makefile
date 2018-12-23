@@ -1,6 +1,4 @@
 verify:
-	set -e
-	git add .
 	go test && make commit || make revert
 
 revert:

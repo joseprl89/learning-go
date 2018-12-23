@@ -21,7 +21,7 @@ func NotDivisibleByAny(primes []int, number int) bool {
 func PrimesUpTo(limit int) []int {
 	var primes []int
 
-	for i := 0; i < limit; i++ {
+	for i := 1; i < limit; i++ {
 		if NotDivisibleByAny(primes, i) {
 			primes = append(primes, i)
 		}

@@ -58,21 +58,3 @@ func TestMergeArrays(t *testing.T) {
 		t.Errorf("Incorrect merged arrays, got: %v, want: %v.", result, expected)
 	}
 }
-
-func IsEqual(lhs []int, rhs []int) bool {
-	if (lhs == nil) != (rhs == nil) {
-		return false
-	}
-
-	if len(lhs) != len(rhs) {
-		return false
-	}
-
-	for i := range lhs {
-		if lhs[i] != rhs[i] {
-			return false
-		}
-	}
-
-	return true
-}

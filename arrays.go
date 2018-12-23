@@ -26,3 +26,21 @@ func MergeArrays(lhs []int, rhs []int) []int {
 	}
 	return lhs
 }
+
+func IsEqual(lhs []int, rhs []int) bool {
+	if (lhs == nil) != (rhs == nil) {
+		return false
+	}
+
+	if len(lhs) != len(rhs) {
+		return false
+	}
+
+	for i := range lhs {
+		if lhs[i] != rhs[i] {
+			return false
+		}
+	}
+
+	return true
+}

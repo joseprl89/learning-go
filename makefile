@@ -1,5 +1,6 @@
 verify:
-	git add . || exit "No changes"
+	set -e
+	git add .
 	go test && make commit || make revert
 
 revert:

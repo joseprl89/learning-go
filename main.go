@@ -1,6 +1,6 @@
 package main
 
-func FindMultiplesOf(x int, limit int) []int {
+func FindMultiplesOf(limit int, x int) []int {
 	var multiples []int
 	for i := 1; i < limit; i++ {
 		if i%x == 0 {

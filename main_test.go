@@ -4,7 +4,7 @@ import "testing"
 
 func TestMultiples(t *testing.T) {
 	expected := []int{2, 4}
-	multiples := FindMultiplesOf(2, 5)
+	multiples := FindMultiplesOf(5, 2)
 	if !IsEqual(multiples, expected) {
 		t.Errorf("Incorrect multiples, got: %v, want: %v.", multiples, expected)
 	}
@@ -12,7 +12,7 @@ func TestMultiples(t *testing.T) {
 
 func TestMultiplesOnEdge(t *testing.T) {
 	expected := []int{2}
-	multiples := FindMultiplesOf(2, 4)
+	multiples := FindMultiplesOf(4, 2)
 	if !IsEqual(multiples, expected) {
 		t.Errorf("Incorrect multiples, got: %v, want: %v.", multiples, expected)
 	}

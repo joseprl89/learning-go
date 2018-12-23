@@ -27,8 +27,8 @@ func TestMultiplesOfMultipleNumbers(t *testing.T) {
 }
 
 func TestMultiplesOfMultipleNumbersReturnsUnique(t *testing.T) {
-	expected := []int{2, 3, 4, 6, 8, 9}
-	multiples := FindMultiplesOf(10, 2, 3)
+	expected := []int{3, 5, 6, 9}
+	multiples := FindMultiplesOf(10, 3, 5)
 	if !IsEqual(multiples, expected) {
 		t.Errorf("Incorrect multiples, got: %v, want: %v.", multiples, expected)
 	}
@@ -44,7 +44,7 @@ func TestArraySum(t *testing.T) {
 
 func TestSumOfMultiples(t *testing.T) {
 	expected := 23
-	sum := SumOfMultiples(9, 3, 5)
+	sum := SumOfMultiples(10, 3, 5)
 	if sum != expected {
 		t.Errorf("Incorrect sum of multiples, got: %d, want: %d.", sum, expected)
 	}

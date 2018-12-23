@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestSum(t *testing.T) {
+func TestMultiples(t *testing.T) {
     expected := []int { 2 }
     multiples := FindMultiplesOf(2, 3)
     if multiples[0] != expected[0] {

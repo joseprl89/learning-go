@@ -76,3 +76,11 @@ func TestFromParsesHeadersWithColonsInValue(t *testing.T) {
 		t.Errorf("The value of the second header wasnt correct, got %s, expected %s", request.headers[0].value, ": Something")
 	}
 }
+
+func TestFromParsesBody(t *testing.T) {
+	request, _ := From("GET / HTTP/1.1\r\nHeaderOne: : Something\r\n\r\nBody")
+
+	if request.body != "Body" {
+		t.Errorf("Expected body to be \"Body\", got \"%s\" instead.", request.body)
+	}
+}

@@ -4,7 +4,7 @@ green:
 
 red:
 	go fmt
-	go test ./... || git commit -am "RED: `date '+%d/%m/%Y %H:%M'`" && make revert
+	go test ./... && make revert || git commit -am "RED: `date '+%d/%m/%Y %H:%M'`"
 
 revert:
 	git reset --hard

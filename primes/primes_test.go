@@ -38,4 +38,8 @@ func TestIsPrimeNumber(t *testing.T) {
 	if IsPrime(9) {
 		t.Errorf("Incorrect result when calculating 9 being prime.")
 	}
+
+	if !IsPrime(5) {
+		t.Errorf("Incorrect result when calculating 5 being prime.")
+	}
 }

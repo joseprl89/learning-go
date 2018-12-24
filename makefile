@@ -9,6 +9,9 @@ red:
 revert:
 	git reset --hard
 
+run-server:
+	go run euler/server
+
 coverage:
 	go test ./... -race -coverprofile=profile.out -covermode=atomic $d
 	rm profile.out

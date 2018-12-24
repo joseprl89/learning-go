@@ -47,7 +47,7 @@ func From(input string) (HTTPRequest, error) {
 	return HTTPRequest{
 		line:    httpRequestLine,
 		headers: headers,
-		body:    "Hi",
+		body:    "",
 	}, nil
 }
 

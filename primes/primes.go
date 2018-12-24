@@ -11,5 +11,11 @@ func DivisibleByAny(primes []int, number int) bool {
 }
 
 func NotDivisibleByAny(primes []int, number int) bool {
-	return !DivisibleByAny(primes, number)
+	for i := range primes {
+		prime := primes[i]
+		if number % prime == 0 {
+			return false
+		}
+	}
+	return true
 }

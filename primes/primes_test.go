@@ -48,4 +48,10 @@ func TestMaximumDivisor(t *testing.T) {
 	if MaximumPrimeDivisor(9) != 3 {
 		t.Errorf("Incorrect result when calculating maximum prime divisor of 9 not being 3.")
 	}
+
+	primeDivisorOfLargeNumber := MaximumPrimeDivisor(13195)
+	expected := 29
+	if primeDivisorOfLargeNumber != expected {
+		t.Errorf("Incorrect result when calculating maximum prime divisor of 13195. Expected %d, got %d.", expected, primeDivisorOfLargeNumber)
+	}
 }

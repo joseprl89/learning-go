@@ -36,6 +36,6 @@ func TestNotDivisibleByAnyWithDivisibleNumber(t *testing.T) {
 
 func TestIsPrimeNumber(t *testing.T) {
 	if IsPrime(9) {
-		t.Errorf("Incorrect result when calculating 9 being prime.", expectedToPass)
+		t.Errorf("Incorrect result when calculating 9 being prime.")
 	}
 }

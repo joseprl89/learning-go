@@ -1,12 +1,13 @@
-verify:
+green:
 	go fmt
-	go test testing && make commit || make revert
+	go test testing && git commit -am "GREEN: `date '+%d/%m/%Y %H:%M'`" || make revert
+
+red:
+	go fmt
+	go test testing || git commit -am "RED: `date '+%d/%m/%Y %H:%M'`" && make revert
 
 revert:
 	git reset --hard
-
-commit:
-	git commit -am "`date '+%d/%m/%Y %H:%M'`: Tests passed!"
 
 coverage:
 	go test ./... -race -coverprofile=profile.out -covermode=atomic $d

@@ -6,5 +6,8 @@ revert:
 	git reset --hard
 
 commit:
-	git add .
-	git commit -m "`date '+%d/%m/%Y %H:%M'`: Tests passed!"
+	git commit -am "`date '+%d/%m/%Y %H:%M'`: Tests passed!"
+
+coverage:
+	go test ./... -race -coverprofile=profile.out -covermode=atomic $d
+	rm profile.out

@@ -1,7 +1,7 @@
 package fibonacci
 
 import "testing"
-import "arrays"
+import "euler/arrays"
 
 func TestFibonacci(t *testing.T) {
 	expected := []int{1, 2, 3, 5, 8, 13, 21, 34}

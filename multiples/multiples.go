@@ -1,6 +1,6 @@
 package multiples
 
-import "arrays"
+import "euler/arrays"
 
 func FindMultiplesOf(limit int, x ...int) []int {
 	var multiples []int

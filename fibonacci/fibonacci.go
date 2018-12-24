@@ -1,6 +1,6 @@
 package fibonacci
 
-import "arrays"
+import "euler/arrays"
 
 func FibonacciSequenceUpTo(limit int) []int {
 	current := 1

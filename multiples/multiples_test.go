@@ -1,7 +1,7 @@
 package multiples
 
 import "testing"
-import "arrays"
+import "euler/arrays"
 
 func TestMultiples(t *testing.T) {
 	expected := []int{2, 4}

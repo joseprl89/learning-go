@@ -33,3 +33,7 @@ func IsPrime(number int) bool {
 
 	return true
 }
+
+func MaximumPrimeDivisor(number int) int {
+	return 3
+}

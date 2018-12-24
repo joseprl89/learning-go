@@ -1,9 +1,9 @@
 green:
-	go fmt
+	go fmt ./...
 	go test ./... && git commit -am "GREEN: `date '+%d/%m/%Y %H:%M'`" || make revert
 
 red:
-	go fmt
+	go fmt ./...
 	go test ./... && make revert || git commit -am "RED: `date '+%d/%m/%Y %H:%M'`"
 
 revert:

@@ -19,3 +19,7 @@ func NotDivisibleByAny(primes []int, number int) bool {
 	}
 	return true
 }
+
+func IsPrime(number int) bool {
+	return false
+}

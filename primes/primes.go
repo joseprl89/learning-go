@@ -9,3 +9,7 @@ func DivisibleByAny(primes []int, number int) bool {
 	}
 	return false
 }
+
+func NotDivisibleByAny(primes []int, number int) bool {
+	return !DivisibleByAny(primes, number)
+}

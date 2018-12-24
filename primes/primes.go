@@ -1,5 +1,7 @@
 package primes
 
+import "math"
+
 func DivisibleByAny(primes []int, number int) bool {
 	for i := range primes {
 		prime := primes[i]
@@ -21,5 +23,13 @@ func NotDivisibleByAny(primes []int, number int) bool {
 }
 
 func IsPrime(number int) bool {
-	return false
+	maximumDivisor := int(math.Sqrt(float64(number))) + 1
+
+	for i := maximumDivisor ; i >= 2 ; i-- {
+		if number % i == 0 {
+			return false
+		}
+	}
+
+	return true
 }

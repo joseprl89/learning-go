@@ -35,5 +35,17 @@ func IsPrime(number int) bool {
 }
 
 func MaximumPrimeDivisor(number int) int {
-	return 3
+	maximumDivisor := int(math.Sqrt(float64(number))) + 1
+
+	for i := maximumDivisor ; i >= 2 ; i-- {
+		if number % i == 0 {
+			maximumPrimeDivisor := MaximumPrimeDivisor(i)
+			if maximumPrimeDivisor == -1 {
+				return i
+			}
+			return maximumPrimeDivisor
+		}
+	}
+
+	return -1
 }

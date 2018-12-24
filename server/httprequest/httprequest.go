@@ -30,13 +30,13 @@ func From(input string) (HTTPRequest, error) {
 
 	lines = lines[1:]
 	var headers []HTTPRequestHeader
-	// var body string
+	var body string
 
 	for i := range lines {
 		headerLine := lines[i]
 
 		if len(headerLine) == 0 && i+1 < len(lines) {
-			// body = strings.Join(lines[i+1:])
+			body = strings.Join(lines[i+1:], "\r\n")
 			break
 		}
 
@@ -55,8 +55,7 @@ func From(input string) (HTTPRequest, error) {
 	return HTTPRequest{
 		line:    httpRequestLine,
 		headers: headers,
-		body:    "Body",
-		// body:    body,
+		body:    body,
 	}, nil
 }
 

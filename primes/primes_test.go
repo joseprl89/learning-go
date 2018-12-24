@@ -43,3 +43,9 @@ func TestIsPrimeNumber(t *testing.T) {
 		t.Errorf("Incorrect result when calculating 5 being prime.")
 	}
 }
+
+func TestMaximumDivisor(t *testing.T) {
+	if MaximumPrimeDivisor(9) != 3 {
+		t.Errorf("Incorrect result when calculating maximum prime divisor of 9 not being 3.")
+	}
+}

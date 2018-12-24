@@ -30,9 +30,17 @@ func From(input string) (HTTPRequest, error) {
 
 	lines = lines[1:]
 	var headers []HTTPRequestHeader
+	// var body string
 
 	for i := range lines {
-		header := strings.SplitAfterN(lines[i], ": ", 2)
+		headerLine := lines[i]
+
+		if len(headerLine) == 0 && i+1 < len(lines) {
+			// body = strings.Join(lines[i+1:])
+			break
+		}
+
+		header := strings.SplitAfterN(headerLine, ": ", 2)
 
 		if len(header) != 2 {
 			return HTTPRequest{}, errors.New("There was a header that did not adhere to HTTP specs.")
@@ -47,7 +55,8 @@ func From(input string) (HTTPRequest, error) {
 	return HTTPRequest{
 		line:    httpRequestLine,
 		headers: headers,
-		body:    "",
+		body:    "Body",
+		// body:    body,
 	}, nil
 }
 

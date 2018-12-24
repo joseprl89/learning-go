@@ -78,8 +78,11 @@ func TestFromParsesHeadersWithColonsInValue(t *testing.T) {
 }
 
 func TestFromParsesBody(t *testing.T) {
-	request, _ := From("GET / HTTP/1.1\r\nHeaderOne: : Something\r\n\r\nBody")
+	request, err := From("GET / HTTP/1.1\r\nHeaderOne: Something\r\n\r\nBody")
 
+	if err != nil {
+		t.Errorf("Expected no error but received \"%s\" instead.", err)
+	}
 	if request.body != "Body" {
 		t.Errorf("Expected body to be \"Body\", got \"%s\" instead.", request.body)
 	}

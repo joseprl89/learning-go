@@ -25,3 +25,11 @@ func TestNotDivisibleByAny(t *testing.T) {
 		t.Errorf("Incorrect result when calculating 2 not divisible by any of %v.", expectedToPass)
 	}
 }
+
+func TestNotDivisibleByAnyWithDivisibleNumber(t *testing.T) {
+	expectedToPass := []int{3, 5}
+
+	if NotDivisibleByAny(expectedToPass, 9) {
+		t.Errorf("Incorrect result when calculating 9 not divisible by any of %v.", expectedToPass)
+	}
+}

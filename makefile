@@ -1,12 +1,15 @@
 green:
 	go fmt ./...
-	go test ./... && git commit -am "GREEN: `date '+%d/%m/%Y %H:%M'`" || make revert
+	make test && git commit -am "GREEN: `date '+%d/%m/%Y %H:%M'`" || make revert
 	git push
 
 red:
 	go fmt ./...
-	go test ./... && make revert || git commit -am "RED: `date '+%d/%m/%Y %H:%M'`"
+	make test && make revert || git commit -am "RED: `date '+%d/%m/%Y %H:%M'`"
 	git push
+
+test:
+	go test ./...
 
 revert:
 	git reset --hard

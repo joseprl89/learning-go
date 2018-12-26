@@ -1,6 +1,9 @@
 package httpresponse
 
-import "testing"
+import (
+	"euler/mocks"
+	"testing"
+)
 
 func TestRequestLineFromDoesNotFail(t *testing.T) {
 	response := HTTPResponse{
@@ -29,5 +32,23 @@ func TestRequestLineFromDoesNotFail(t *testing.T) {
 
 	if len(response.headers) != 0 {
 		t.Errorf("Incorrect headers %s, expected none.", response.headers)
+	}
+}
+
+func TestWriteToConnection(t *testing.T) {
+	response := HTTPResponse{
+		httpVersion:  "HTTP/1.1",
+		status:       200,
+		reasonPhrase: "OK",
+		body:         "<html><body>Hi!</body></html>",
+		headers:      make([]HTTPResponseHeader, 0),
+	}
+
+	mockedConnection := mocks.Connection{}
+
+	response.WriteTo(mockedConnection)
+
+	if len(mockedConnection.WrittenBytes) == 0 {
+		t.Errorf("Didn't write anything to connection, expected: \"%v\"", response)
 	}
 }

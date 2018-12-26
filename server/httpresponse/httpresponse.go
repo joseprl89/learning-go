@@ -1,5 +1,7 @@
 package httpresponse
 
+import "net"
+
 type HTTPResponse struct {
 	httpVersion  string
 	status       int
@@ -11,4 +13,8 @@ type HTTPResponse struct {
 type HTTPResponseHeader struct {
 	name  string
 	value string
+}
+
+func (HTTPResponse) WriteTo(net.Conn) {
+
 }

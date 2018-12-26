@@ -53,6 +53,6 @@ func TestWriteToConnection(t *testing.T) {
 	expected := "HTTP/1.1 200 OK\n\n<html><body>Hi!</body></html>"
 
 	if writtenString != expected {
-		t.Errorf("Didn't write anything to connection, expected: \"%v\"\n\ngot:\n%s", expected, writtenString)
+		t.Errorf("Didn't write correct data to connection. Expected:\n%v\n\ngot:\n%s", expected, writtenString)
 	}
 }

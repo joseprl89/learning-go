@@ -20,16 +20,7 @@ func (middleware *Middleware) resolveFor(request httprequest.HTTPRequest, respon
 	internalChannel := make(chan *httpresponse.HTTPResponse)
 
 	if response == nil {
-		response = &httpresponse.HTTPResponse{
-			Status:       500,
-			ReasonPhrase: "Not implemented",
-			Headers: []httpresponse.Header{
-				{
-					Name:  "Server",
-					Value: "LearningGoServer",
-				},
-			},
-		}
+		response = noResponse()
 	}
 
 	go middleware.resolveFunction(request, *response, internalChannel)
@@ -40,6 +31,19 @@ func (middleware *Middleware) resolveFor(request httprequest.HTTPRequest, respon
 		middleware.next.resolveFor(request, result, out)
 	} else {
 		out <- result
+	}
+}
+
+func noResponse() *httpresponse.HTTPResponse {
+	return &httpresponse.HTTPResponse{
+		Status:       500,
+		ReasonPhrase: "Not implemented",
+		Headers: []httpresponse.Header{
+			{
+				Name:  "Server",
+				Value: "LearningGoServer",
+			},
+		},
 	}
 }
 

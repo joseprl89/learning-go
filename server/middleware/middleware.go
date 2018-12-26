@@ -21,7 +21,8 @@ func (middleware *Middleware) resolveFor(request httprequest.HTTPRequest, respon
 
 	if response == nil {
 		response = &httpresponse.HTTPResponse{
-			Status: 500,
+			Status:       500,
+			ReasonPhrase: "Not implemented",
 		}
 	}
 

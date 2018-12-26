@@ -59,6 +59,6 @@ func TestUntreatedReturns500(t *testing.T) {
 	}
 
 	if response.ReasonPhrase != "Not implemented" {
-		t.Errorf("Did not resolve correctly. Expected Not implemented reason phrase, got %d.", response.ReasonPhrase)
+		t.Errorf("Did not resolve correctly. Expected Not implemented reason phrase, got %s.", response.ReasonPhrase)
 	}
 }

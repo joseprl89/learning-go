@@ -26,3 +26,17 @@ func New(resolver MiddlewareResolver) Middleware {
 		resolveFunction: resolver,
 	}
 }
+
+func (first *Middleware) Then(resolver MiddlewareResolver) *Middleware {
+	middleware := New(resolver)
+	first.append(&middleware)
+	return first
+}
+
+func (middleware *Middleware) append(final *Middleware) {
+	if middleware.next != nil {
+		middleware.next.append(final)
+	} else {
+		middleware.next = final
+	}
+}

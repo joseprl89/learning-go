@@ -23,3 +23,22 @@ func TestFirstOneResolves(t *testing.T) {
 		t.Errorf("Did not resolve correctly. Expected Success, got %s.", response.Body)
 	}
 }
+
+func TestSecondOneResolves(t *testing.T) {
+	sut := middleware.New(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- httpresponse.HTTPResponse) {
+		out <- nil
+	}).Then(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- httpresponse.HTTPResponse) {
+		out <- httpresponse.HTTPResponse{
+			Body: "Success",
+		}
+	})
+
+	channel := make(chan httpresponse.HTTPResponse)
+	go sut.ResolveFor(httprequest.HTTPRequest{}, channel)
+
+	response := <-channel
+
+	if response.Body != "Success" {
+		t.Errorf("Did not resolve correctly. Expected Success, got %s.", response.Body)
+	}
+}

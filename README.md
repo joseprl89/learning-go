@@ -15,7 +15,7 @@ The main challenges encountered through it is:
 * Go expects your code to be in a very specific structure. This is best explained [here](https://golang.org/doc/code.html).
 * Didn't use an IDE while writing the code.
 * Go is quite strict on its warnings. Unused variables trigger a build failure. 
-* Lack of knowledge of Go's syntax, Go being strict on warnings, and the Commit and test or revrt approach, meant I wasted many iterations due to simple mistakes a syntax highlighter would have solved.
+* Lack of knowledge of Go's syntax, Go being strict on warnings, and the Commit and test or revrt approach, meant I wasted many iterations due to simple mistakes a syntax highlighter would have solved. Switched to Goland in a trial account.
 
 # Expected work
 

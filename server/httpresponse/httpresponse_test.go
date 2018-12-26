@@ -50,7 +50,9 @@ func TestWriteToConnection(t *testing.T) {
 
 	writtenString := string(mockedConnection.WrittenBytes)
 
-	if len(writtenString) == 0 {
-		t.Errorf("Didn't write anything to connection, expected: \"%v\"\n\ngot:\n%s", response, writtenString)
+	expected := "HTTP/1.1 200 OK\n\n<html><body>Hi!</body></html>"
+
+	if writtenString != expected {
+		t.Errorf("Didn't write anything to connection, expected: \"%v\"\n\ngot:\n%s", expected, writtenString)
 	}
 }

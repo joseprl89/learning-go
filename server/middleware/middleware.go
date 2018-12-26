@@ -12,6 +12,6 @@ type Middleware struct {
 
 func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out chan httpresponse.HTTPResponse) {
 	out <- httpresponse.HTTPResponse{
-		Body: "Fail",
+		Body: "Success",
 	}
 }

@@ -55,6 +55,6 @@ func TestUntreatedReturns500(t *testing.T) {
 	response := <-channel
 
 	if response.Status != 500 {
-		t.Errorf("Did not resolve correctly. Expected 500 status code, got %s.", response.Status)
+		t.Errorf("Did not resolve correctly. Expected 500 status code, got %d.", response.Status)
 	}
 }

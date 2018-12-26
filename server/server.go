@@ -1,15 +1,28 @@
 package server
 
 import (
-	"euler/server/connection"
 	"euler/server/httprequest"
 	"euler/server/httpresponse"
 	"fmt"
 	"net"
 )
 
-func HandleConnection(conn net.Conn) {
-	response := httpresponse.HTTPResponse{
+func HandleConnection(connection net.Conn) {
+	defer closeConnectionAndLog(connection)
+
+	request, readError := readClientRequest(connection)
+
+	if readError != nil {
+		fmt.Printf("There was an error while reading from the client: %s.\n", readError)
+		return
+	}
+
+	sendResponseAndLog(responseFor(request), connection)
+	fmt.Println("Request served.")
+}
+
+func responseFor(request httprequest.HTTPRequest) httpresponse.HTTPResponse {
+	return httpresponse.HTTPResponse{
 		HttpVersion:  "HTTP/1.1",
 		Status:       200,
 		ReasonPhrase: "OK",
@@ -19,25 +32,47 @@ func HandleConnection(conn net.Conn) {
 			{Name: "Date", Value: "Today"},
 		},
 	}
+}
 
-	fmt.Println("Connection received!")
-	input, err := connection.ReadFrom(conn)
+func readClientRequest(connection net.Conn) (httprequest.HTTPRequest, error) {
+	input, readError := ReadFrom(connection)
 
-	if err != nil {
-		fmt.Printf("There was an error while reading from the client: %s.\n", err)
-	} else {
-		headers, _ := httprequest.From(input)
-		fmt.Printf("Received from client:\n\n%s\n\n", input)
-		fmt.Printf("%v", headers)
+	if readError != nil {
+		return httprequest.HTTPRequest{}, readError
 	}
 
-	err = response.WriteTo(conn)
-	if err != nil {
-		fmt.Printf("There was an error while closing the connection from the client: %s.\n", err)
-	}
+	return httprequest.From(input)
+}
 
-	err = conn.Close()
-	if err != nil {
-		fmt.Printf("There was an error while closing the connection from the client: %s.\n", err)
+func closeConnectionAndLog(connection net.Conn) {
+	closeError := connection.Close()
+	if closeError != nil {
+		fmt.Printf("There was an error while closing the connection from the client: %s.\n", closeError)
+	}
+}
+
+func sendResponseAndLog(response httpresponse.HTTPResponse, connection net.Conn) {
+	writeError := response.WriteTo(connection)
+	if writeError != nil {
+		fmt.Printf("There was an error while closing the connection from the client: %s.\n", writeError)
+	}
+}
+
+func ReadFrom(conn net.Conn) (string, error) {
+	bufferSize := 32
+	buffer := make([]byte, bufferSize)
+	var result []byte
+	for {
+		n, err := conn.Read(buffer)
+
+		if err != nil {
+			return "", err
+		} else {
+			result = append(result, buffer[0:n]...)
+		}
+
+		if n < bufferSize {
+			return string(result[:]), nil
+		}
 	}
 }

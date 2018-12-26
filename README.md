@@ -26,6 +26,7 @@ I'd like to start focusing on exercises that will be more challenging for the de
 * No generics
 * Interfaces implicitly implemented
 * Go routines and channels
+* Value vs reference type. Despite knowing the asterisk syntax from C/C++ I was confused by the fact you can implement an interface with reference semantics to mutate the object, while value types won't mutate it. See change [here](https://github.com/joseprl89/learning-go/commit/694c3aad68d9260fb4c4f9ce6a2789224f462ccf#diff-d930881d9b72deadbd3d22c7166001f9). Article for reference [here](https://medium.com/@saiyerram/go-interfaces-pointers-4d1d98d5c9c6)
 
 To do so, I will attmpt to do:
 

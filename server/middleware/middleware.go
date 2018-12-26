@@ -5,15 +5,15 @@ import (
 	"euler/server/httpresponse"
 )
 
-type MiddlewareResolver func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- httpresponse.HTTPResponse)
+type MiddlewareResolver func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse)
 
 type Middleware struct {
 	resolveFunction MiddlewareResolver
 	next            *Middleware
 }
 
-func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out chan<- httpresponse.HTTPResponse) {
-	internalChannel := make(chan httpresponse.HTTPResponse)
+func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out chan<- *httpresponse.HTTPResponse) {
+	internalChannel := make(chan *httpresponse.HTTPResponse)
 
 	go middleware.resolveFunction(request, httpresponse.HTTPResponse{}, internalChannel)
 
@@ -21,15 +21,15 @@ func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out ch
 	out <- result
 }
 
-func New(resolver MiddlewareResolver) Middleware {
-	return Middleware{
+func New(resolver MiddlewareResolver) *Middleware {
+	return &Middleware{
 		resolveFunction: resolver,
 	}
 }
 
 func (first *Middleware) Then(resolver MiddlewareResolver) *Middleware {
 	middleware := New(resolver)
-	first.append(&middleware)
+	first.append(middleware)
 	return first
 }
 

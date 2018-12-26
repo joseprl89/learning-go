@@ -8,14 +8,14 @@ import (
 type MiddlewareResolver func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- httpresponse.HTTPResponse)
 
 type Middleware struct {
-	ResolveFunction MiddlewareResolver
-	Next            *Middleware
+	resolveFunction MiddlewareResolver
+	next            *Middleware
 }
 
 func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out chan<- httpresponse.HTTPResponse) {
 	internalChannel := make(chan httpresponse.HTTPResponse)
 
-	go middleware.ResolveFunction(request, httpresponse.HTTPResponse{}, internalChannel)
+	go middleware.resolveFunction(request, httpresponse.HTTPResponse{}, internalChannel)
 
 	result := <-internalChannel
 	out <- result
@@ -23,6 +23,6 @@ func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out ch
 
 func New(resolver MiddlewareResolver) Middleware {
 	return Middleware{
-		ResolveFunction: resolver,
+		resolveFunction: resolver,
 	}
 }

@@ -23,6 +23,12 @@ func (middleware *Middleware) resolveFor(request httprequest.HTTPRequest, respon
 		response = &httpresponse.HTTPResponse{
 			Status:       500,
 			ReasonPhrase: "Not implemented",
+			Headers: []httpresponse.Header{
+				{
+					Name:  "Server",
+					Value: "LearningGoServer",
+				},
+			},
 		}
 	}
 

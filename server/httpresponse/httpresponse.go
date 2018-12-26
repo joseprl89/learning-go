@@ -36,3 +36,16 @@ func (response HTTPResponse) WriteTo(conn net.Conn) error {
 	_, err := conn.Write(responseBytes)
 	return err
 }
+
+func NoResponse() *HTTPResponse {
+	return &HTTPResponse{
+		Status:       500,
+		ReasonPhrase: "Not implemented",
+		Headers: []Header{
+			{
+				Name:  "Server",
+				Value: "LearningGoServer",
+			},
+		},
+	}
+}

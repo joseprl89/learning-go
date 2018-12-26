@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1470bac3-f9c0-489b-921f-f6eba261f2ad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mocks/netConnection.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/netConnection.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/httpresponse/httpresponse.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/httpresponse/httpresponse.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/httpresponse/httpresponse_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/httpresponse/httpresponse_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/httpresponse/httpresponse_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+            <state relative-caret-position="472">
+              <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
               <folding>
                 <element signature="e#22#58#0" expanded="true" />
               </folding>
@@ -170,9 +168,6 @@
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="TestWriteToConnection_in_euler_server_httpresponse - 2018.12.26 at 10h 14m 56s.xml">
-      <configuration name="TestWriteToConnection in euler/server/httpresponse" configurationId="GoTestRunConfiguration" />
-    </history-entry>
     <history-entry file="go_test_euler - 2018.12.26 at 10h 15m 22s.xml">
       <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
     </history-entry>
@@ -200,6 +195,9 @@
     <history-entry file="go_test_euler - 2018.12.26 at 10h 27m 30s.xml">
       <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
     </history-entry>
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 27m 45s.xml">
+      <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -220,11 +218,11 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -286,8 +284,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/httpresponse/httpresponse_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+        <state relative-caret-position="472">
+          <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
           <folding>
             <element signature="e#22#58#0" expanded="true" />
           </folding>

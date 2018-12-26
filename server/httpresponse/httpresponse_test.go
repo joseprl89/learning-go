@@ -2,6 +2,7 @@ package httpresponse
 
 import (
 	"euler/mocks"
+	"fmt"
 	"testing"
 )
 
@@ -41,7 +42,9 @@ func TestWriteToConnection(t *testing.T) {
 		status:       200,
 		reasonPhrase: "OK",
 		body:         "<html><body>Hi!</body></html>",
-		headers:      make([]HTTPResponseHeader, 0),
+		headers: []HTTPResponseHeader{
+			{name: "Server", value: "LearningGoServer"},
+		},
 	}
 
 	var mockedConnection = mocks.Connection{}
@@ -51,6 +54,40 @@ func TestWriteToConnection(t *testing.T) {
 	writtenString := string(mockedConnection.WrittenBytes)
 
 	expected := "HTTP/1.1 200 OK\n\n<html><body>Hi!</body></html>"
+
+	if writtenString != expected {
+		t.Errorf("Didn't write correct data to connection. Expected:\n%v\n\ngot:\n%s", expected, writtenString)
+	}
+
+	if err != nil {
+		t.Error("Found an unexpected error")
+	}
+}
+
+func TestWriteToConnectionWithHeaders(t *testing.T) {
+	response := HTTPResponse{
+		httpVersion:  "HTTP/1.1",
+		status:       200,
+		reasonPhrase: "OK",
+		body:         "<html><body>Hi!</body></html>",
+		headers: []HTTPResponseHeader{
+			{name: "Server", value: "LearningGoServer"},
+			{name: "Date", value: "Today"},
+		},
+	}
+
+	var mockedConnection = mocks.Connection{}
+
+	err := response.WriteTo(&mockedConnection)
+
+	writtenString := string(mockedConnection.WrittenBytes)
+
+	expected := fmt.Sprintf(
+		"%s\n%s\n%s\n\n%s",
+		"HTTP/1.1 200 OK",
+		"Server: LearningGoServer",
+		"Date: Today",
+		"<html><body>Hi!</body></html>")
 
 	if writtenString != expected {
 		t.Errorf("Didn't write correct data to connection. Expected:\n%v\n\ngot:\n%s", expected, writtenString)

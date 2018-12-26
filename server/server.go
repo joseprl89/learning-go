@@ -1,12 +1,12 @@
-package main
+package server
 
 import (
+	"euler/server/connection"
+	"euler/server/httprequest"
 	"euler/server/httpresponse"
+	"fmt"
 	"net"
 )
-import "fmt"
-import "euler/server/connection"
-import "euler/server/httprequest"
 
 func HandleConnection(conn net.Conn) {
 	response := httpresponse.HTTPResponse{
@@ -39,21 +39,5 @@ func HandleConnection(conn net.Conn) {
 	err = conn.Close()
 	if err != nil {
 		fmt.Printf("There was an error while closing the connection from the client: %s.\n", err)
-	}
-}
-
-func main() {
-	ln, err := net.Listen("tcp", ":8080")
-	if err != nil {
-		fmt.Printf("There was an error while starting a server on port 8080 %s\n", err)
-		return
-	}
-	for {
-		conn, err := ln.Accept()
-		if err != nil {
-			fmt.Printf("There was an error while opening a connection %s\n", err)
-			continue
-		}
-		go HandleConnection(conn)
 	}
 }

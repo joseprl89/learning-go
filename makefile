@@ -4,7 +4,7 @@ green:
 
 commit_green:
 	git add .
-	git commit -am "GREEN: `date '+%d/%m/%Y %H:%M'`"
+	git commit -am ":white_check_mark: `date '+%d/%m/%Y %H:%M'`"
 	git push
 
 red:
@@ -13,7 +13,7 @@ red:
 
 commit_red:
 	git add .
-	git commit -am "RED: `date '+%d/%m/%Y %H:%M'`"
+	git commit -am ":red_circle: `date '+%d/%m/%Y %H:%M'`"
 	git push
 
 test:

@@ -62,3 +62,19 @@ func TestUntreatedReturns500(t *testing.T) {
 		t.Errorf("Did not resolve correctly. Expected Not implemented reason phrase, got %s.", response.ReasonPhrase)
 	}
 }
+
+func TestAddsHeaders(t *testing.T) {
+	sut := middleware.New(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
+		out <- &response
+	})
+
+	channel := make(chan *httpresponse.HTTPResponse)
+
+	go sut.ResolveFor(httprequest.HTTPRequest{}, channel)
+
+	response := <-channel
+
+	if len(response.Headers) == 0 {
+		t.Error("Expected headers, got none.")
+	}
+}

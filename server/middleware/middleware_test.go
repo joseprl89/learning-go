@@ -8,14 +8,11 @@ import (
 )
 
 func TestFirstOneResolves(t *testing.T) {
-	sut := middleware.Middleware{
-		ResolveFunction: func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- httpresponse.HTTPResponse) {
-			out <- httpresponse.HTTPResponse{
-				Body: "Success",
-			}
-		},
-		Next: nil,
-	}
+	sut := middleware.New(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- httpresponse.HTTPResponse) {
+		out <- httpresponse.HTTPResponse{
+			Body: "Success",
+		}
+	})
 
 	channel := make(chan httpresponse.HTTPResponse)
 	go sut.ResolveFor(httprequest.HTTPRequest{}, channel)

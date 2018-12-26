@@ -10,6 +10,6 @@ type Middleware struct {
 	Next            *Middleware
 }
 
-func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out chan httpresponse.HTTPResponse) {
+func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out chan<- httpresponse.HTTPResponse) {
 	middleware.ResolveFunction(request, httpresponse.HTTPResponse{}, out)
 }

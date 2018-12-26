@@ -35,7 +35,7 @@ func responseFor(request httprequest.HTTPRequest) httpresponse.HTTPResponse {
 }
 
 func readClientRequest(connection net.Conn) (httprequest.HTTPRequest, error) {
-	input, readError := ReadFrom(connection)
+	input, readError := readFrom(connection)
 
 	if readError != nil {
 		return httprequest.HTTPRequest{}, readError
@@ -58,7 +58,7 @@ func sendResponseAndLog(response httpresponse.HTTPResponse, connection net.Conn)
 	}
 }
 
-func ReadFrom(conn net.Conn) (string, error) {
+func readFrom(conn net.Conn) (string, error) {
 	bufferSize := 32
 	buffer := make([]byte, bufferSize)
 	var result []byte

@@ -13,12 +13,25 @@ type Middleware struct {
 }
 
 func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out chan<- *httpresponse.HTTPResponse) {
+	middleware.resolveFor(request, nil, out)
+}
+
+func (middleware *Middleware) resolveFor(request httprequest.HTTPRequest, response *httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
 	internalChannel := make(chan *httpresponse.HTTPResponse)
 
-	go middleware.resolveFunction(request, httpresponse.HTTPResponse{}, internalChannel)
+	if response == nil {
+		response = &httpresponse.HTTPResponse{}
+	}
+
+	go middleware.resolveFunction(request, *response, internalChannel)
 
 	result := <-internalChannel
-	out <- result
+
+	if middleware.next != nil {
+		middleware.next.resolveFor(request, result, out)
+	} else {
+		out <- result
+	}
 }
 
 func New(resolver MiddlewareResolver) *Middleware {

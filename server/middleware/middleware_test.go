@@ -26,7 +26,7 @@ func TestFirstOneResolves(t *testing.T) {
 
 func TestSecondOneResolves(t *testing.T) {
 	sut := middleware.New(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
-		out <- nil
+		out <- &response
 	}).Then(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
 		out <- &httpresponse.HTTPResponse{
 			Body: "Success",

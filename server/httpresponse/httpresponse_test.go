@@ -8,41 +8,41 @@ import (
 
 func TestRequestLineFromDoesNotFail(t *testing.T) {
 	response := HTTPResponse{
-		httpVersion:  "HTTP/1.1",
-		status:       200,
-		reasonPhrase: "OK",
-		body:         "<html><body>Hi!</body></html>",
-		headers:      make([]HTTPResponseHeader, 0),
+		HttpVersion:  "HTTP/1.1",
+		Status:       200,
+		ReasonPhrase: "OK",
+		Body:         "<html><body>Hi!</body></html>",
+		Headers:      make([]Header, 0),
 	}
 
-	if response.httpVersion != "HTTP/1.1" {
-		t.Errorf("Incorrect HTTP Version %s.", response.httpVersion)
+	if response.HttpVersion != "HTTP/1.1" {
+		t.Errorf("Incorrect HTTP Version %s.", response.HttpVersion)
 	}
 
-	if response.status != 200 {
-		t.Errorf("Incorrect Status code %d.", response.status)
+	if response.Status != 200 {
+		t.Errorf("Incorrect Status code %d.", response.Status)
 	}
 
-	if response.reasonPhrase != "OK" {
-		t.Errorf("Incorrect reason phrase %s, expected OK.", response.reasonPhrase)
+	if response.ReasonPhrase != "OK" {
+		t.Errorf("Incorrect reason phrase %s, expected OK.", response.ReasonPhrase)
 	}
 
-	if response.body != "<html><body>Hi!</body></html>" {
-		t.Errorf("Incorrect body %s, expected \"<html><body>Hi!</body></html>\".", response.reasonPhrase)
+	if response.Body != "<html><body>Hi!</body></html>" {
+		t.Errorf("Incorrect body %s, expected \"<html><body>Hi!</body></html>\".", response.ReasonPhrase)
 	}
 
-	if len(response.headers) != 0 {
-		t.Errorf("Incorrect headers %s, expected none.", response.headers)
+	if len(response.Headers) != 0 {
+		t.Errorf("Incorrect headers %s, expected none.", response.Headers)
 	}
 }
 
 func TestWriteToConnection(t *testing.T) {
 	response := HTTPResponse{
-		httpVersion:  "HTTP/1.1",
-		status:       200,
-		reasonPhrase: "OK",
-		body:         "<html><body>Hi!</body></html>",
-		headers:      make([]HTTPResponseHeader, 0),
+		HttpVersion:  "HTTP/1.1",
+		Status:       200,
+		ReasonPhrase: "OK",
+		Body:         "<html><body>Hi!</body></html>",
+		Headers:      make([]Header, 0),
 	}
 
 	var mockedConnection = mocks.Connection{}
@@ -64,13 +64,13 @@ func TestWriteToConnection(t *testing.T) {
 
 func TestWriteToConnectionWithHeaders(t *testing.T) {
 	response := HTTPResponse{
-		httpVersion:  "HTTP/1.1",
-		status:       200,
-		reasonPhrase: "OK",
-		body:         "<html><body>Hi!</body></html>",
-		headers: []HTTPResponseHeader{
-			{name: "Server", value: "LearningGoServer"},
-			{name: "Date", value: "Today"},
+		HttpVersion:  "HTTP/1.1",
+		Status:       200,
+		ReasonPhrase: "OK",
+		Body:         "<html><body>Hi!</body></html>",
+		Headers: []Header{
+			{Name: "Server", Value: "LearningGoServer"},
+			{Name: "Date", Value: "Today"},
 		},
 	}
 

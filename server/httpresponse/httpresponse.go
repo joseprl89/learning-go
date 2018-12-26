@@ -7,29 +7,29 @@ import (
 )
 
 type HTTPResponse struct {
-	httpVersion  string
-	status       int
-	reasonPhrase string
-	body         string
-	headers      []HTTPResponseHeader
+	HttpVersion  string
+	Status       int
+	ReasonPhrase string
+	Body         string
+	Headers      []Header
 }
 
-type HTTPResponseHeader struct {
-	name  string
-	value string
+type Header struct {
+	Name  string
+	Value string
 }
 
 func (response HTTPResponse) WriteTo(conn net.Conn) error {
 	var sb strings.Builder
-	sb.WriteString(fmt.Sprintf("%s %d %s\n", response.httpVersion, response.status, response.reasonPhrase))
+	sb.WriteString(fmt.Sprintf("%s %d %s\n", response.HttpVersion, response.Status, response.ReasonPhrase))
 
-	for i := range response.headers {
-		header := response.headers[i]
-		sb.WriteString(fmt.Sprintf("%s: %s\n", header.name, header.value))
+	for i := range response.Headers {
+		header := response.Headers[i]
+		sb.WriteString(fmt.Sprintf("%s: %s\n", header.Name, header.Value))
 	}
 
 	sb.WriteString("\n")
-	sb.WriteString(response.body)
+	sb.WriteString(response.Body)
 
 	responseBytes := []byte(sb.String())
 

@@ -1,11 +1,25 @@
 package main
 
-import "net"
+import (
+	"euler/server/httpresponse"
+	"net"
+)
 import "fmt"
 import "euler/server/connection"
 import "euler/server/httprequest"
 
 func HandleConnection(conn net.Conn) {
+	response := httpresponse.HTTPResponse{
+		HttpVersion:  "HTTP/1.1",
+		Status:       200,
+		ReasonPhrase: "OK",
+		Body:         "<html><body>Hi!</body></html>",
+		Headers: []httpresponse.Header{
+			{Name: "Server", Value: "LearningGoServer"},
+			{Name: "Date", Value: "Today"},
+		},
+	}
+
 	fmt.Println("Connection received!")
 	input, err := connection.ReadFrom(conn)
 
@@ -17,8 +31,12 @@ func HandleConnection(conn net.Conn) {
 		fmt.Printf("%v", headers)
 	}
 
-	err = conn.Close()
+	err = response.WriteTo(conn)
+	if err != nil {
+		fmt.Printf("There was an error while closing the connection from the client: %s.\n", err)
+	}
 
+	err = conn.Close()
 	if err != nil {
 		fmt.Printf("There was an error while closing the connection from the client: %s.\n", err)
 	}

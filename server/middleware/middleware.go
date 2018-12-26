@@ -20,7 +20,9 @@ func (middleware *Middleware) resolveFor(request httprequest.HTTPRequest, respon
 	internalChannel := make(chan *httpresponse.HTTPResponse)
 
 	if response == nil {
-		response = &httpresponse.HTTPResponse{}
+		response = &httpresponse.HTTPResponse{
+			Status: 500,
+		}
 	}
 
 	go middleware.resolveFunction(request, *response, internalChannel)

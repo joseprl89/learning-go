@@ -31,7 +31,7 @@ I'd like to start focusing on exercises that will be more challenging for the de
 To do so, I will attmpt to do:
 
 * Ping command line.
-* HTTP Server based on TCP sockets.
+* [HTTP Server based on TCP sockets.](https://github.com/joseprl89/learning-go/tree/master/server)
 * [Exercises on classes](https://github.com/karan/Projects#classes).
 
 

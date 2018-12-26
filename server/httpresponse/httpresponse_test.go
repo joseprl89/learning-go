@@ -48,7 +48,9 @@ func TestWriteToConnection(t *testing.T) {
 
 	response.WriteTo(mockedConnection)
 
-	if len(mockedConnection.WrittenBytes) == 0 {
-		t.Errorf("Didn't write anything to connection, expected: \"%v\"", response)
+	writtenString := string(mockedConnection.WrittenBytes)
+
+	if len(writtenString) == 0 {
+		t.Errorf("Didn't write anything to connection, expected: \"%v\"\n\ngot:\n%s", response, writtenString)
 	}
 }

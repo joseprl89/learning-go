@@ -23,6 +23,11 @@ func (response HTTPResponse) WriteTo(conn net.Conn) error {
 	var sb strings.Builder
 	sb.WriteString(fmt.Sprintf("%s %d %s\n", response.httpVersion, response.status, response.reasonPhrase))
 
+	for i := range response.headers {
+		header := response.headers[i]
+		sb.WriteString(fmt.Sprintf("%s: %s\n", header.name, header.value))
+	}
+
 	sb.WriteString("\n")
 	sb.WriteString(response.body)
 

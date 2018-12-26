@@ -43,7 +43,7 @@ func From(input string) (HTTPRequest, error) {
 		header := strings.SplitAfterN(headerLine, ": ", 2)
 
 		if len(header) != 2 {
-			return HTTPRequest{}, errors.New("There was a header that did not adhere to HTTP specs.")
+			return HTTPRequest{}, errors.New("there was a header that did not adhere to HTTP specs")
 		}
 
 		headers = append(headers, HTTPRequestHeader{
@@ -64,7 +64,7 @@ func RequestLineFrom(request string) (HTTPRequestLine, error) {
 
 	if len(parts) < 3 {
 		// TODO Better error formatting
-		return HTTPRequestLine{}, errors.New("The request line did not adhere to HTTP specs.")
+		return HTTPRequestLine{}, errors.New("the request line did not adhere to HTTP specs")
 	}
 
 	return HTTPRequestLine{

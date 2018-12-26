@@ -17,7 +17,11 @@ func HandleConnection(conn net.Conn) {
 		fmt.Printf("%v", headers)
 	}
 
-	conn.Close()
+	err = conn.Close()
+
+	if err != nil {
+		fmt.Printf("There was an error while closing the connection from the client: %s.\n", err)
+	}
 }
 
 func main() {

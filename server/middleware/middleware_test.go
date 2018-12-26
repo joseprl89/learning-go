@@ -57,4 +57,8 @@ func TestUntreatedReturns500(t *testing.T) {
 	if response.Status != 500 {
 		t.Errorf("Did not resolve correctly. Expected 500 status code, got %d.", response.Status)
 	}
+
+	if response.ReasonPhrase != "Not implemented" {
+		t.Errorf("Did not resolve correctly. Expected Not implemented reason phrase, got %d.", response.ReasonPhrase)
+	}
 }

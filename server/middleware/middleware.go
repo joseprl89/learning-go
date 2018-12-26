@@ -11,5 +11,7 @@ type Middleware struct {
 }
 
 func (middleware *Middleware) ResolveFor(request httprequest.HTTPRequest, out chan<- httpresponse.HTTPResponse) {
-	middleware.ResolveFunction(request, httpresponse.HTTPResponse{}, out)
+	internalChannel := make(chan httpresponse.HTTPResponse)
+	go middleware.ResolveFunction(request, httpresponse.HTTPResponse{}, internalChannel)
+	out <- <-internalChannel
 }

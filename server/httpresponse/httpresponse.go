@@ -1,6 +1,10 @@
 package httpresponse
 
-import "net"
+import (
+	"fmt"
+	"net"
+	"strings"
+)
 
 type HTTPResponse struct {
 	httpVersion  string
@@ -15,6 +19,15 @@ type HTTPResponseHeader struct {
 	value string
 }
 
-func (HTTPResponse) WriteTo(net.Conn) {
+func (response HTTPResponse) WriteTo(conn net.Conn) error {
+	var sb strings.Builder
+	sb.WriteString(fmt.Sprintf("%s %d %s\n", response.httpVersion, response.status, response.reasonPhrase))
 
+	sb.WriteString("\n")
+	sb.WriteString(response.body)
+
+	responseBytes := []byte(sb.String())
+
+	_, err := conn.Write(responseBytes)
+	return err
 }

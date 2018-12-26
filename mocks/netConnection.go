@@ -17,12 +17,12 @@ func (Connection) Read(b []byte) (n int, err error) {
 	return 0, errors.New("not implemented")
 }
 
-func (conn Connection) Write(b []byte) (n int, err error) {
+func (conn *Connection) Write(b []byte) (n int, err error) {
 	conn.WrittenBytes = append(conn.WrittenBytes, b...)
 	return len(b), nil
 }
 
-func (conn Connection) Close() error {
+func (conn *Connection) Close() error {
 	conn.IsClosed = true
 	return nil
 }

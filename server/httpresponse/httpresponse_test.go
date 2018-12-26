@@ -44,9 +44,9 @@ func TestWriteToConnection(t *testing.T) {
 		headers:      make([]HTTPResponseHeader, 0),
 	}
 
-	mockedConnection := mocks.Connection{}
+	var mockedConnection = mocks.Connection{}
 
-	response.WriteTo(mockedConnection)
+	err := response.WriteTo(&mockedConnection)
 
 	writtenString := string(mockedConnection.WrittenBytes)
 
@@ -54,5 +54,9 @@ func TestWriteToConnection(t *testing.T) {
 
 	if writtenString != expected {
 		t.Errorf("Didn't write correct data to connection. Expected:\n%v\n\ngot:\n%s", expected, writtenString)
+	}
+
+	if err != nil {
+		t.Error("Found an unexpected error")
 	}
 }

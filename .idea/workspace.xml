@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1470bac3-f9c0-489b-921f-f6eba261f2ad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/mocks/netConnection.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/netConnection.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/httpresponse/httpresponse.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/httpresponse/httpresponse.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/httpresponse/httpresponse_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/httpresponse/httpresponse_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/httpresponse/httpresponse_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="55" column="70" selection-start-line="55" selection-start-column="70" selection-end-line="55" selection-end-column="70" />
+            <state relative-caret-position="322">
+              <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
               <folding>
                 <element signature="e#22#58#0" expanded="true" />
               </folding>
@@ -25,46 +27,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mocks/netConnection.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/connection/connection.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/server.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/httpresponse/httpresponse.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+            <state relative-caret-position="450">
+              <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+              <folding>
+                <element signature="e#22#46#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/httprequest/httprequest.go">
+        <entry file="file://$PROJECT_DIR$/mocks/netConnection.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+            <state relative-caret-position="300">
+              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -123,6 +101,12 @@
             </path>
             <path>
               <item name="euler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="euler" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="httpresponse" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="euler" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -151,7 +135,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Test.go test euler">
+    <configuration name="TestWriteToConnection in euler/server/httpresponse" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="euler" />
+      <working_directory value="$PROJECT_DIR$/server/httpresponse" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="euler/server/httpresponse" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestWriteToConnection$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go test euler" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
       <module name="euler" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -164,24 +159,45 @@
       <pattern value="./..." />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Go Test.go test euler" />
+      <item itemvalue="Go Test.TestWriteToConnection in euler/server/httpresponse" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestWriteToConnection in euler/server/httpresponse" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="go_test_euler - 2018.12.26 at 09h 54m 04s.xml">
+    <history-entry file="TestWriteToConnection_in_euler_server_httpresponse - 2018.12.26 at 10h 14m 56s.xml">
+      <configuration name="TestWriteToConnection in euler/server/httpresponse" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 15m 22s.xml">
       <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_euler - 2018.12.26 at 10h 04m 49s.xml">
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 16m 04s.xml">
       <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_euler - 2018.12.26 at 10h 05m 10s.xml">
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 18m 23s.xml">
       <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_euler - 2018.12.26 at 10h 05m 20s.xml">
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 19m 13s.xml">
       <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_euler - 2018.12.26 at 10h 05m 50s.xml">
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 25m 09s.xml">
       <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_euler - 2018.12.26 at 10h 07m 00s.xml">
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 25m 19s.xml">
+      <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 26m 08s.xml">
+      <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 26m 32s.xml">
+      <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_test_euler - 2018.12.26 at 10h 27m 30s.xml">
       <configuration name="go test euler" configurationId="GoTestRunConfiguration" />
     </history-entry>
   </component>
@@ -204,11 +220,11 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -223,16 +239,9 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/go/src/net/net.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="125" column="4" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/httprequest/httprequest.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
+        <state relative-caret-position="330">
           <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
         </state>
       </provider>
@@ -244,13 +253,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/httpresponse/httpresponse.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/connection/connection.go">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -258,17 +260,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/go/src/net/net.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mocks/netConnection.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="300">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/httpresponse/httpresponse.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+          <folding>
+            <element signature="e#22#46#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/httpresponse/httpresponse_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="55" column="70" selection-start-line="55" selection-start-column="70" selection-end-line="55" selection-end-column="70" />
+        <state relative-caret-position="322">
+          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
           <folding>
             <element signature="e#22#58#0" expanded="true" />
           </folding>

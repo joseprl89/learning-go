@@ -42,9 +42,7 @@ func TestWriteToConnection(t *testing.T) {
 		status:       200,
 		reasonPhrase: "OK",
 		body:         "<html><body>Hi!</body></html>",
-		headers: []HTTPResponseHeader{
-			{name: "Server", value: "LearningGoServer"},
-		},
+		headers:      make([]HTTPResponseHeader, 0),
 	}
 
 	var mockedConnection = mocks.Connection{}

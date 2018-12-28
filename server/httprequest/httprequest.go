@@ -10,14 +10,14 @@ type HTTPRequest struct {
 }
 
 type HTTPRequestLine struct {
-	method      string
-	request     string
-	httpVersion string
+	Method      string
+	Request     string
+	HTTPVersion string
 }
 
 type HTTPRequestHeader struct {
-	name  string
-	value string
+	Name  string
+	Value string
 }
 
 func From(input string) (HTTPRequest, error) {
@@ -47,8 +47,8 @@ func From(input string) (HTTPRequest, error) {
 		}
 
 		headers = append(headers, HTTPRequestHeader{
-			name:  strings.TrimSuffix(header[0], ": "),
-			value: header[1],
+			Name:  strings.TrimSuffix(header[0], ": "),
+			Value: header[1],
 		})
 	}
 
@@ -68,8 +68,8 @@ func RequestLineFrom(request string) (HTTPRequestLine, error) {
 	}
 
 	return HTTPRequestLine{
-		method:      parts[0],
-		request:     parts[1],
-		httpVersion: parts[2],
+		Method:      parts[0],
+		Request:     parts[1],
+		HTTPVersion: parts[2],
 	}, nil
 }

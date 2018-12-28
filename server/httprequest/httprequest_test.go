@@ -18,7 +18,7 @@ func TestRequestLineFromFailsWhenLessThanThreeSpaces(t *testing.T) {
 
 func TestRequestLineReadsCorrectlyValues(t *testing.T) {
 	requestLine, _ := RequestLineFrom("GET / HTTP/1.1")
-	if requestLine.method != "GET" || requestLine.request != "/" || requestLine.httpVersion != "HTTP/1.1" {
+	if requestLine.Method != "GET" || requestLine.Request != "/" || requestLine.HTTPVersion != "HTTP/1.1" {
 		t.Errorf("Request line not read correctly: %s.", requestLine)
 	}
 }
@@ -40,40 +40,40 @@ func TestFromFailsOnInvalidHeaders(t *testing.T) {
 func TestFromParsesHeaders(t *testing.T) {
 	request, _ := From("GET / HTTP/1.1\r\nHeaderOne: Some Value")
 
-	if request.Headers[0].name != "HeaderOne" {
-		t.Errorf("The name of the second header wasnt correct, got %s, expected %s", request.Headers[0].name, "HeaderOne")
+	if request.Headers[0].Name != "HeaderOne" {
+		t.Errorf("The Name of the second header wasnt correct, got %s, expected %s", request.Headers[0].Name, "HeaderOne")
 	}
-	if request.Headers[0].value != "Some Value" {
-		t.Errorf("The value of the second header wasnt correct, got %s, expected %s", request.Headers[0].value, "Some Value")
+	if request.Headers[0].Value != "Some Value" {
+		t.Errorf("The value of the second header wasnt correct, got %s, expected %s", request.Headers[0].Value, "Some Value")
 	}
 }
 
 func TestFromParsesMultipleHeaders(t *testing.T) {
 	request, _ := From("GET / HTTP/1.1\r\nHeaderOne: Some Value\r\nHeaderTwo: Some Other Value")
 
-	if request.Headers[0].name != "HeaderOne" {
-		t.Errorf("The name of the second header wasnt correct, got %s, expected %s", request.Headers[0].name, "HeaderOne")
+	if request.Headers[0].Name != "HeaderOne" {
+		t.Errorf("The Name of the second header wasnt correct, got %s, expected %s", request.Headers[0].Name, "HeaderOne")
 	}
-	if request.Headers[0].value != "Some Value" {
-		t.Errorf("The value of the second header wasnt correct, got %s, expected %s", request.Headers[0].value, "Some Value")
+	if request.Headers[0].Value != "Some Value" {
+		t.Errorf("The value of the second header wasnt correct, got %s, expected %s", request.Headers[0].Value, "Some Value")
 	}
 
-	if request.Headers[1].name != "HeaderTwo" {
-		t.Errorf("The name of the second header wasnt correct, got %s, expected %s", request.Headers[1].name, "HeaderTwo")
+	if request.Headers[1].Name != "HeaderTwo" {
+		t.Errorf("The Name of the second header wasnt correct, got %s, expected %s", request.Headers[1].Name, "HeaderTwo")
 	}
-	if request.Headers[1].value != "Some Other Value" {
-		t.Errorf("The value of the second header wasnt correct, got %s, expected %s", request.Headers[1].value, "Some Other Value")
+	if request.Headers[1].Value != "Some Other Value" {
+		t.Errorf("The value of the second header wasnt correct, got %s, expected %s", request.Headers[1].Value, "Some Other Value")
 	}
 }
 
 func TestFromParsesHeadersWithColonsInValue(t *testing.T) {
 	request, _ := From("GET / HTTP/1.1\r\nHeaderOne: : Something")
 
-	if request.Headers[0].name != "HeaderOne" {
-		t.Errorf("The name of the second header wasnt correct, got %s, expected %s", request.Headers[0].name, "HeaderOne")
+	if request.Headers[0].Name != "HeaderOne" {
+		t.Errorf("The Name of the second header wasnt correct, got %s, expected %s", request.Headers[0].Name, "HeaderOne")
 	}
-	if request.Headers[0].value != ": Something" {
-		t.Errorf("The value of the second header wasnt correct, got %s, expected %s", request.Headers[0].value, ": Something")
+	if request.Headers[0].Value != ": Something" {
+		t.Errorf("The value of the second header wasnt correct, got %s, expected %s", request.Headers[0].Value, ": Something")
 	}
 }
 

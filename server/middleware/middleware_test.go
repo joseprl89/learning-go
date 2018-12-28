@@ -97,6 +97,7 @@ func TestGetRoute(t *testing.T) {
 	}
 
 	sut := middleware.New().
+		Get("/", goodbyeResolver).
 		Get("/hello", helloResolver).
 		Get("/goodbye", goodbyeResolver)
 

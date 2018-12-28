@@ -81,10 +81,11 @@ func TestWriteToConnectionWithHeaders(t *testing.T) {
 	writtenString := string(mockedConnection.WrittenBytes)
 
 	expected := fmt.Sprintf(
-		"%s\n%s\n%s\n\n%s",
+		"%s\n%s\n%s\n%s\n\n%s",
 		"HTTP/1.1 200 OK",
 		"Server: LearningGoServer",
 		"Date: Today",
+		"Content-Length: 29",
 		"<html><body>Hi!</body></html>")
 
 	if writtenString != expected {

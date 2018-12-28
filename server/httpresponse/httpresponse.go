@@ -3,7 +3,9 @@ package httpresponse
 import (
 	"fmt"
 	"net"
+	"net/http"
 	"strings"
+	"time"
 )
 
 type HTTPResponse struct {
@@ -46,6 +48,15 @@ func NoResponse() *HTTPResponse {
 				Name:  "Server",
 				Value: "LearningGoServer",
 			},
+			{
+				Name:  "Date",
+				Value: currentTimeInRFC850Format(),
+			},
 		},
 	}
+}
+
+func currentTimeInRFC850Format() string {
+	now := time.Now()
+	return now.Format(http.TimeFormat)
 }

@@ -34,14 +34,14 @@ func (middleware *Middleware) resolveFor(request httprequest.HTTPRequest, respon
 	}
 }
 
-func New(resolver MiddlewareResolver) *Middleware {
+func WithResolver(resolver MiddlewareResolver) *Middleware {
 	return &Middleware{
 		resolveFunction: resolver,
 	}
 }
 
 func (first *Middleware) Then(resolver MiddlewareResolver) *Middleware {
-	middleware := New(resolver)
+	middleware := WithResolver(resolver)
 	first.append(middleware)
 	return first
 }

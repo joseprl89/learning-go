@@ -8,7 +8,7 @@ import (
 )
 
 func TestFirstOneResolves(t *testing.T) {
-	sut := middleware.New(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
+	sut := middleware.WithResolver(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
 		out <- &httpresponse.HTTPResponse{
 			Body: "Success",
 		}
@@ -25,7 +25,7 @@ func TestFirstOneResolves(t *testing.T) {
 }
 
 func TestSecondOneResolves(t *testing.T) {
-	sut := middleware.New(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
+	sut := middleware.WithResolver(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
 		out <- &response
 	}).Then(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
 		out <- &httpresponse.HTTPResponse{
@@ -44,7 +44,7 @@ func TestSecondOneResolves(t *testing.T) {
 }
 
 func TestUntreatedReturns500(t *testing.T) {
-	sut := middleware.New(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
+	sut := middleware.WithResolver(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
 		out <- &response
 	})
 
@@ -64,7 +64,7 @@ func TestUntreatedReturns500(t *testing.T) {
 }
 
 func TestAddsHeaders(t *testing.T) {
-	sut := middleware.New(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
+	sut := middleware.WithResolver(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
 		out <- &response
 	})
 

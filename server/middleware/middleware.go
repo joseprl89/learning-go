@@ -34,6 +34,12 @@ func (middleware *Middleware) resolveFor(request httprequest.HTTPRequest, respon
 	}
 }
 
+func New() *Middleware {
+	return WithResolver(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
+		out <- &response
+	})
+}
+
 func WithResolver(resolver MiddlewareResolver) *Middleware {
 	return &Middleware{
 		resolveFunction: resolver,

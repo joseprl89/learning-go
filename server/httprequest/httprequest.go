@@ -4,9 +4,9 @@ import "strings"
 import "errors"
 
 type HTTPRequest struct {
-	line    HTTPRequestLine
-	headers []HTTPRequestHeader
-	body    string
+	Line    HTTPRequestLine
+	Headers []HTTPRequestHeader
+	Body    string
 }
 
 type HTTPRequestLine struct {
@@ -53,9 +53,9 @@ func From(input string) (HTTPRequest, error) {
 	}
 
 	return HTTPRequest{
-		line:    httpRequestLine,
-		headers: headers,
-		body:    body,
+		Line:    httpRequestLine,
+		Headers: headers,
+		Body:    body,
 	}, nil
 }
 

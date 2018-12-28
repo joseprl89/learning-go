@@ -62,6 +62,10 @@ func (middleware *Middleware) append(final *Middleware) {
 
 func (middleware *Middleware) Get(path string, resolver MiddlewareResolver) *Middleware {
 	return middleware.Then(func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
-		resolver(request, response, out)
+		if path == request.Line.Request {
+			resolver(request, response, out)
+		} else {
+			out <- &response
+		}
 	})
 }

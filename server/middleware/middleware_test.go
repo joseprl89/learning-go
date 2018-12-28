@@ -80,12 +80,19 @@ func TestAddsHeaders(t *testing.T) {
 }
 
 func TestGetRoute(t *testing.T) {
-	resolver := func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
+	helloResolver := func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
 		response.Body = "hello!"
 		out <- &response
 	}
 
-	sut := middleware.New().Get("/hello", resolver)
+	goodbyeResolver := func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
+		response.Body = "goodbye!"
+		out <- &response
+	}
+
+	sut := middleware.New().
+		Get("/hello", helloResolver).
+		Get("/goodbye", goodbyeResolver)
 
 	channel := make(chan *httpresponse.HTTPResponse)
 

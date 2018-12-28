@@ -80,6 +80,12 @@ func TestAddsHeaders(t *testing.T) {
 }
 
 func TestGetRoute(t *testing.T) {
+	request := httprequest.HTTPRequest{
+		Line: httprequest.HTTPRequestLine{
+			Request: "/hello",
+		},
+	}
+
 	helloResolver := func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
 		response.Body = "hello!"
 		out <- &response
@@ -96,7 +102,7 @@ func TestGetRoute(t *testing.T) {
 
 	channel := make(chan *httpresponse.HTTPResponse)
 
-	go sut.ResolveFor(httprequest.HTTPRequest{}, channel)
+	go sut.ResolveFor(request, channel)
 
 	response := <-channel
 

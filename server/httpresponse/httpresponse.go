@@ -30,6 +30,8 @@ func (response HTTPResponse) WriteTo(conn net.Conn) error {
 		sb.WriteString(fmt.Sprintf("%s: %s\n", header.Name, header.Value))
 	}
 
+	sb.WriteString(fmt.Sprintf("%s: %d\n", "Content-Length", len(response.Body)))
+
 	sb.WriteString("\n")
 	sb.WriteString(response.Body)
 

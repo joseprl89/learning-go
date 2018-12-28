@@ -78,3 +78,22 @@ func TestAddsHeaders(t *testing.T) {
 		t.Error("Expected headers, got none.")
 	}
 }
+
+func TestGetRoute(t *testing.T) {
+	resolver := func(request httprequest.HTTPRequest, response httpresponse.HTTPResponse, out chan<- *httpresponse.HTTPResponse) {
+		response.Body = "hello!"
+		out <- &response
+	}
+
+	sut := middleware.New().Get("/hello", resolver)
+
+	channel := make(chan *httpresponse.HTTPResponse)
+
+	go sut.ResolveFor(httprequest.HTTPRequest{}, channel)
+
+	response := <-channel
+
+	if response.Body != "hello!" {
+		t.Errorf("Expected body \"hello!\", got \"%s\".", response.Body)
+	}
+}

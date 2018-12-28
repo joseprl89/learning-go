@@ -74,7 +74,7 @@ func TestAddsHeaders(t *testing.T) {
 
 	response := <-channel
 
-	if len(response.Headers) == 0 {
+	if len(response.Headers) < 2 {
 		t.Error("Expected headers, got none.")
 	}
 }

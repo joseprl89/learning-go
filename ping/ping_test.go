@@ -130,7 +130,7 @@ func TestPingSuccessDescriptionTimeIsFloatLessThanTimeElapsedInTest(t *testing.T
 	testDuration := time.Since(startOfTest)
 
 	if time.Duration(pingDuration) >= testDuration || err != nil {
-		t.Errorf("Description did not match expectations. Got \"%s\", extracted time \"%s\", expected a positive float.",
+		t.Errorf("Description did not match expectations. Got \"%s\", extracted time \"%s\", expected a positive int64.",
 			result.Description,
 			timeString)
 	}

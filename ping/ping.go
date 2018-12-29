@@ -3,6 +3,7 @@ package ping
 import (
 	"fmt"
 	"net"
+	"time"
 )
 
 type Pinger interface {
@@ -21,11 +22,15 @@ type pinger struct {
 }
 
 func (p pinger) Ping(host string, port int, out chan Result) {
+	pingStartTime := time.Now()
+
 	conn, err := p.dialer(host, port)
+
+	pingDuration := time.Since(pingStartTime)
 
 	out <- Result{
 		Success:     err == nil && conn != nil,
-		Description: fmt.Sprintf("From %s: icmp_seq=%d time=%d", host, 0, 10000000),
+		Description: fmt.Sprintf("From %s: icmp_seq=%d time=%d", host, 0, pingDuration),
 	}
 }
 

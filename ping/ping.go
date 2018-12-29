@@ -36,7 +36,9 @@ func (p pinger) PingOnce(host string, port int, out chan Result) {
 }
 
 func (p pinger) Ping(host string, port int, out chan Result, count int) {
-	p.PingOnce(host, port, out)
+	for i := 0; i < count; i++ {
+		p.PingOnce(host, port, out)
+	}
 	close(out)
 }
 

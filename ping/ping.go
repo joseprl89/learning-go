@@ -16,9 +16,13 @@ type pinger struct {
 	dialer Dialer
 }
 
-func (pinger) Ping(host string, port int, out chan Result) {
-	out <- Result{
-		Success: true,
+func (p pinger) Ping(host string, port int, out chan Result) {
+	conn, _ := p.dialer(host, port)
+
+	if conn != nil {
+		out <- Result{
+			Success: true,
+		}
 	}
 }
 

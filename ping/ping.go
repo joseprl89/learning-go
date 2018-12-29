@@ -19,14 +19,8 @@ type pinger struct {
 func (p pinger) Ping(host string, port int, out chan Result) {
 	conn, _ := p.dialer(host, port)
 
-	if conn != nil {
-		out <- Result{
-			Success: true,
-		}
-	} else {
-		out <- Result{
-			Success: false,
-		}
+	out <- Result{
+		Success: conn != nil,
 	}
 }
 

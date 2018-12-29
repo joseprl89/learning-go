@@ -17,10 +17,10 @@ type pinger struct {
 }
 
 func (p pinger) Ping(host string, port int, out chan Result) {
-	_, err := p.dialer(host, port)
+	conn, err := p.dialer(host, port)
 
 	out <- Result{
-		Success: err == nil,
+		Success: err == nil && conn != nil,
 	}
 }
 

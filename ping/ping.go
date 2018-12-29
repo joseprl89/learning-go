@@ -25,7 +25,7 @@ func (p pinger) Ping(host string, port int, out chan Result) {
 
 	out <- Result{
 		Success:     err == nil && conn != nil,
-		Description: fmt.Sprintf("From %s: icmp_seq=%d time=%f", host, 0, float64(1)),
+		Description: fmt.Sprintf("From %s: icmp_seq=%d time=%d", host, 0, 10000000),
 	}
 }
 

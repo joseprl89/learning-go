@@ -81,7 +81,7 @@ func TestPingSuccessDescription(t *testing.T) {
 
 	expectedStartOfDescription := "From google.com: icmp_seq=0 time="
 
-	if strings.HasPrefix(result.Description, expectedStartOfDescription) {
+	if !strings.HasPrefix(result.Description, expectedStartOfDescription) {
 		t.Errorf("Description did not match expectations. Got %s, expected %s.",
 			result.Description,
 			expectedStartOfDescription)

@@ -7,7 +7,8 @@ type Pinger interface {
 }
 
 type Result struct {
-	Success bool
+	Success     bool
+	Description string
 }
 
 type Dialer func(host string, port int) (net.Conn, error)

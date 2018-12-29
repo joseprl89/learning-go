@@ -1,6 +1,7 @@
 package ping_test
 
 import (
+	"euler/mocks"
 	"euler/ping"
 	"net"
 	"testing"
@@ -9,7 +10,7 @@ import (
 func TestPing(t *testing.T) {
 	channel := make(chan ping.Result)
 	sut := ping.NewWithDialer(func(host string, port int) (conn net.Conn, e error) {
-		panic("Dont call yet")
+		return &mocks.Connection{}, nil
 	})
 
 	go sut.Ping("google.com", 443, channel)

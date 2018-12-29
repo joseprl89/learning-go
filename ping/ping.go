@@ -7,7 +7,7 @@ import (
 )
 
 type Pinger interface {
-	Ping(host string, port int, out chan Result)
+	PingOnce(host string, port int, out chan Result)
 }
 
 type Result struct {
@@ -21,7 +21,7 @@ type pinger struct {
 	dialer Dialer
 }
 
-func (p pinger) Ping(host string, port int, out chan Result) {
+func (p pinger) PingOnce(host string, port int, out chan Result) {
 	pingStartTime := time.Now()
 
 	conn, err := p.dialer(host, port)

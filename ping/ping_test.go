@@ -17,12 +17,12 @@ func TestPingSuccess(t *testing.T) {
 		return &mocks.Connection{}, nil
 	})
 
-	go sut.Ping("google.com", 443, channel)
+	go sut.PingOnce("google.com", 443, channel)
 
 	result := <-channel
 
 	if !result.Success {
-		t.Error("Did not Ping successfully the server when success expected.")
+		t.Error("Did not PingOnce successfully the server when success expected.")
 	}
 }
 
@@ -32,12 +32,12 @@ func TestPingFailure(t *testing.T) {
 		return nil, errors.New("fail")
 	})
 
-	go sut.Ping("google.com", 443, channel)
+	go sut.PingOnce("google.com", 443, channel)
 
 	result := <-channel
 
 	if result.Success {
-		t.Error("Did Ping successfully the server when failure expected.")
+		t.Error("Did PingOnce successfully the server when failure expected.")
 	}
 }
 
@@ -47,12 +47,12 @@ func TestPingFailureWhenErrorAndConnection(t *testing.T) {
 		return &mocks.Connection{}, errors.New("fail")
 	})
 
-	go sut.Ping("google.com", 443, channel)
+	go sut.PingOnce("google.com", 443, channel)
 
 	result := <-channel
 
 	if result.Success {
-		t.Error("Did Ping successfully the server when failure expected.")
+		t.Error("Did PingOnce successfully the server when failure expected.")
 	}
 }
 
@@ -62,12 +62,12 @@ func TestPingFailureWhenBothConnectionAndErrorAreNil(t *testing.T) {
 		return nil, nil
 	})
 
-	go sut.Ping("google.com", 443, channel)
+	go sut.PingOnce("google.com", 443, channel)
 
 	result := <-channel
 
 	if result.Success {
-		t.Error("Did Ping successfully the server when failure expected.")
+		t.Error("Did PingOnce successfully the server when failure expected.")
 	}
 }
 
@@ -77,7 +77,7 @@ func TestPingSuccessDescription(t *testing.T) {
 		return &mocks.Connection{}, nil
 	})
 
-	go sut.Ping("google.com", 443, channel)
+	go sut.PingOnce("google.com", 443, channel)
 
 	result := <-channel
 
@@ -96,7 +96,7 @@ func TestPingSuccessDescriptionTimeIsFloatBiggerThanZero(t *testing.T) {
 		return &mocks.Connection{}, nil
 	})
 
-	go sut.Ping("google.com", 443, channel)
+	go sut.PingOnce("google.com", 443, channel)
 
 	result := <-channel
 
@@ -119,7 +119,7 @@ func TestPingSuccessDescriptionTimeIsFloatLessThanTimeElapsedInTest(t *testing.T
 		return &mocks.Connection{}, nil
 	})
 
-	go sut.Ping("google.com", 443, channel)
+	go sut.PingOnce("google.com", 443, channel)
 
 	result := <-channel
 

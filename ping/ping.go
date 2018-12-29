@@ -1,6 +1,9 @@
 package ping
 
-import "net"
+import (
+	"fmt"
+	"net"
+)
 
 type Pinger interface {
 	Ping(host string, port int, out chan Result)
@@ -21,7 +24,8 @@ func (p pinger) Ping(host string, port int, out chan Result) {
 	conn, err := p.dialer(host, port)
 
 	out <- Result{
-		Success: err == nil && conn != nil,
+		Success:     err == nil && conn != nil,
+		Description: fmt.Sprintf("From %s: icmp_seq=%d time=", host, 0),
 	}
 }
 

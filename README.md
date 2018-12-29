@@ -51,6 +51,6 @@ I wouldn't apply this approach in a production codebase because:
 
 On the other hand, a git pre-commit or pre-push. hook to run your unit tests and ensures you don't push code to the remote would mimick well enough the desired outcome. The downside of this approach would be that committing would become an expensive operation if tests last too long, which would entice developers into not committing as frequently as we should.
 
-## Summary
+**Summary**
 
 In summary, I believe this technique to be a great learning technique to incorporate into katas and pair programming training sessions, but I struggl to see this as a production methodology.

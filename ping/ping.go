@@ -36,10 +36,10 @@ func (p pinger) PingOnce(host string, port int, out chan Result) {
 }
 
 func (p pinger) Ping(host string, port int, out chan Result, count int) {
+	defer close(out)
 	for i := 0; i < count; i++ {
 		p.PingOnce(host, port, out)
 	}
-	close(out)
 }
 
 func NewWithDialer(dialer Dialer) Pinger {

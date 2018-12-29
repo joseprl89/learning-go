@@ -26,7 +26,7 @@ func TestPingSuccess(t *testing.T) {
 func TestPingFailure(t *testing.T) {
 	channel := make(chan ping.Result)
 	sut := ping.NewWithDialer(func(host string, port int) (conn net.Conn, e error) {
-		return nil, errors.New("Fail")
+		return nil, errors.New("fail")
 	})
 
 	go sut.Ping("google.com", 443, channel)
@@ -41,7 +41,22 @@ func TestPingFailure(t *testing.T) {
 func TestPingFailureWhenErrorAndConnection(t *testing.T) {
 	channel := make(chan ping.Result)
 	sut := ping.NewWithDialer(func(host string, port int) (conn net.Conn, e error) {
-		return &mocks.Connection{}, errors.New("Fail")
+		return &mocks.Connection{}, errors.New("fail")
+	})
+
+	go sut.Ping("google.com", 443, channel)
+
+	result := <-channel
+
+	if result.Success {
+		t.Error("Did Ping successfully the server when failure expected.")
+	}
+}
+
+func TestPingFailureWhenBothConnectionAndErrorAreNil(t *testing.T) {
+	channel := make(chan ping.Result)
+	sut := ping.NewWithDialer(func(host string, port int) (conn net.Conn, e error) {
+		return nil, nil
 	})
 
 	go sut.Ping("google.com", 443, channel)

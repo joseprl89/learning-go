@@ -7,7 +7,7 @@ import (
 
 func TestPing(t *testing.T) {
 	channel := make(chan ping.Result)
-	go ping.Server("https://www.google.com/", channel)
+	go ping.Server("www.google.com", 443, channel)
 
 	result := <-channel
 

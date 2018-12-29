@@ -23,11 +23,10 @@ func (p pinger) Ping(host string, port int, out chan Result) {
 		out <- Result{
 			Success: true,
 		}
-	}
-
-	// To avoid deadlock in tests. temporary.
-	out <- Result{
-		Success: true,
+	} else {
+		out <- Result{
+			Success: false,
+		}
 	}
 }
 

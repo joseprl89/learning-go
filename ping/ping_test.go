@@ -5,6 +5,7 @@ import (
 	"euler/mocks"
 	"euler/ping"
 	"net"
+	"strconv"
 	"strings"
 	"testing"
 )
@@ -85,5 +86,26 @@ func TestPingSuccessDescription(t *testing.T) {
 		t.Errorf("Description did not match expectations. Got %s, expected %s.",
 			result.Description,
 			expectedStartOfDescription)
+	}
+}
+
+func TestPingSuccessDescriptionTimeIsFloatBiggerThanZero(t *testing.T) {
+	channel := make(chan ping.Result)
+	sut := ping.NewWithDialer(func(host string, port int) (conn net.Conn, e error) {
+		return &mocks.Connection{}, nil
+	})
+
+	go sut.Ping("google.com", 443, channel)
+
+	result := <-channel
+
+	expectedStartOfDescription := "From google.com: icmp_seq=0 time="
+	timeString := strings.Replace(result.Description, expectedStartOfDescription, "", 1)
+	time, err := strconv.ParseFloat(timeString, 64)
+
+	if time <= 0 || err != nil {
+		t.Errorf("Description did not match expectations. Got %s, extracted time %s, expected a positive float.",
+			result.Description,
+			timeString)
 	}
 }

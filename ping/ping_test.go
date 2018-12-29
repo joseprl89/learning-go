@@ -104,7 +104,7 @@ func TestPingSuccessDescriptionTimeIsFloatBiggerThanZero(t *testing.T) {
 	time, err := strconv.ParseFloat(timeString, 64)
 
 	if time <= 0 || err != nil {
-		t.Errorf("Description did not match expectations. Got %s, extracted time %s, expected a positive float.",
+		t.Errorf("Description did not match expectations. Got \"%s\", extracted time \"%s\", expected a positive float.",
 			result.Description,
 			timeString)
 	}

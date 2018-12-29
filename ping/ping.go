@@ -19,7 +19,8 @@ type Result struct {
 type Dialer func(host string, port int) (net.Conn, error)
 
 type pinger struct {
-	dialer Dialer
+	dialer        Dialer
+	sleepDuration time.Duration
 }
 
 func (p pinger) PingOnce(host string, port int, out chan Result) {
@@ -39,11 +40,22 @@ func (p pinger) Ping(host string, port int, out chan Result, count int) {
 	defer close(out)
 	for i := 0; i < count; i++ {
 		p.PingOnce(host, port, out)
+		time.Sleep(p.sleepDuration)
 	}
 }
 
 func NewWithDialer(dialer Dialer) Pinger {
 	return pinger{
-		dialer: dialer,
+		dialer:        dialer,
+		sleepDuration: 0,
+	}
+}
+
+func New() Pinger {
+	return pinger{
+		dialer: func(host string, port int) (conn net.Conn, e error) {
+			return net.Dial("tcp", fmt.Sprintf("%s:%d", host, port))
+		},
+		sleepDuration: time.Duration(1 * time.Second),
 	}
 }

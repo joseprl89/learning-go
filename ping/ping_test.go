@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 	"testing"
+	"time"
 )
 
 func TestPingSuccess(t *testing.T) {
@@ -101,9 +102,34 @@ func TestPingSuccessDescriptionTimeIsFloatBiggerThanZero(t *testing.T) {
 
 	expectedStartOfDescription := "From google.com: icmp_seq=0 time="
 	timeString := strings.Replace(result.Description, expectedStartOfDescription, "", 1)
-	time, err := strconv.ParseFloat(timeString, 64)
+	pingDuration, err := strconv.ParseInt(timeString, 10, 64)
 
-	if time <= 0 || err != nil {
+	if pingDuration <= 0 || err != nil {
+		t.Errorf("Description did not match expectations. Got \"%s\", extracted time \"%s\", expected a positive int64.",
+			result.Description,
+			timeString)
+	}
+}
+
+func TestPingSuccessDescriptionTimeIsFloatLessThanTimeElapsedInTest(t *testing.T) {
+	startOfTest := time.Now()
+
+	channel := make(chan ping.Result)
+	sut := ping.NewWithDialer(func(host string, port int) (conn net.Conn, e error) {
+		return &mocks.Connection{}, nil
+	})
+
+	go sut.Ping("google.com", 443, channel)
+
+	result := <-channel
+
+	expectedStartOfDescription := "From google.com: icmp_seq=0 time="
+	timeString := strings.Replace(result.Description, expectedStartOfDescription, "", 1)
+	pingDuration, err := strconv.ParseInt(timeString, 10, 64)
+
+	testDuration := time.Since(startOfTest)
+
+	if time.Duration(pingDuration) >= testDuration || err != nil {
 		t.Errorf("Description did not match expectations. Got \"%s\", extracted time \"%s\", expected a positive float.",
 			result.Description,
 			timeString)
